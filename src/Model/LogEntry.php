@@ -34,6 +34,11 @@ class LogEntry extends DataObject
         'Level'
     ];
 
+    /**
+     * We should never need to edit log entries
+     *
+     * {@inheritDoc}
+     */
     public function canEdit($member = false, $context = [])
     {
         return false;

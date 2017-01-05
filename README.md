@@ -20,7 +20,7 @@ composer require silverleague/logviewer
 
 ## Configuration
 
-This is a plug and play module. Simply instal, then run a `dev/build` and flush:
+This is a plug and play module. Simply install, then run a `dev/build` and flush:
 
 ```shell
 sake dev/build flush=1
