@@ -27,6 +27,11 @@ class DataObjectHandlerTest extends SapphireTest
     protected $originalHandlers = [];
 
     /**
+     * {@inheritDoc}
+     */
+    protected $usesDatabase = true;
+
+    /**
      * Create a Logger to test with and clear the existing logger handlers
      *
      * {@inheritDoc}
