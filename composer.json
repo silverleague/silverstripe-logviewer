@@ -1,0 +1,30 @@
+{
+    "name": "silverleague/logviewer",
+    "description": "View your SilverStripe logs from inside the CMS",
+    "type": "silverstripe-module",
+    "homepage": "https://github.com/silverleague/silverstripe-logviewer",
+    "license": "MIT",
+    "keywords": ["silverstripe", "cms", "log", "monolog"],
+    "authors": [
+        {
+            "name": "Robbie Averill",
+            "email": "robbie@silverstripe.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4.0@dev",
+        "monolog/monolog": "~1.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverLeague\\LogViewer\\": "src/",
+            "SilverLeague\\LogViewer\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

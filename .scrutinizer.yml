@@ -1,0 +1,6 @@
+filter:
+  paths: [src/*, tests/*]
+
+checks:
+  php: true
+

@@ -1,0 +1,11 @@
+---
+Name: logviewerconfig
+After:
+  - #logging
+---
+SilverStripe\Core\Injector\Injector:
+  Logger:
+    calls:
+      AddDataObjectHandler: [ pushHandler, [ %$DataObjectHandler ] ]
+  DataObjectHandler:
+    class: SilverLeague\LogViewer\Handler\DataObjectHandler

@@ -1,0 +1,25 @@
+# See https://github.com/silverstripe/silverstripe-travis-support for setup details
+
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+
+env:
+  - DB=MYSQL CORE_RELEASE=4
+  - DB=PGSQL CORE_RELEASE=4
+
+before_script:
+  - composer self-update || true
+  - git clone git://github.com/silverstripe/silverstripe-travis-support.git ~/travis-support
+  - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
+  - cd ~/builds/ss
+  - composer install
+  # Install PHPUnit manually, since it cannot be a composer requirement at this point due to
+  # the framework supporting PHP 5.5
+  - cd ~/builds && composer require phpunit/phpunit ^5.7 && cd ss
+
+script:
+  - php ../vendor/bin/phpunit logviewer/tests
