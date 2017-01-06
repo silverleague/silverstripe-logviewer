@@ -5,6 +5,7 @@ namespace SilverLeague\LogViewer\Admin;
 use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\View\Requirements;
 
 /**
  * Creates a CMS interface for viewing log entries
@@ -36,6 +37,17 @@ class LogViewerAdmin extends ModelAdmin
      * {@inheritDoc}
      */
     public $showImportForm = false;
+
+    /**
+     * Add log viewer custom CSS styles
+     *
+     * {@inheritDoc}
+     */
+    public function init()
+    {
+        parent::init();
+        Requirements::css(LOGVIEWER_DIR . '/assets/scss/logviewer.css');
+    }
 
     /**
      * Remove the "add new" button
