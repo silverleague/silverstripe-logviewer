@@ -1,0 +1,9 @@
+SilverLeague\LogViewer\Model\LogEntry:
+  debug_entry:
+    Entry: Contents being sent to something is...
+    Level: DEBUG
+    Created: '2017-01-06 12:39:00'
+  info_entry:
+    Entry: You should probably try this instead
+    Level: INFO
+    Created: '2017-01-06 12:40:00'

@@ -46,11 +46,23 @@ class LogViewerAdmin extends ModelAdmin
     {
         $form = parent::getEditForm($id, $fields);
 
-        $gridField = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
+        $gridField = $form->Fields()->fieldByName($this->getGridFieldName());
+
+        /** @var \SilverStripe\Forms\GridField\GridFieldConfig $gridFieldConfig */
         $config = $gridField->getConfig();
         $config->removeComponentsByType($config->getComponentByType(GridFieldAddNewButton::class));
 
         return $form;
+    }
+
+    /**
+     * Get the FieldList name for the GridField
+     *
+     * @return string
+     */
+    public function getGridFieldName()
+    {
+        return $this->sanitiseClassName($this->modelClass);
     }
 
     /**

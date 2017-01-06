@@ -8,7 +8,6 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Core\Injector\Injector;
 
 /**
- * @coversDefaultClass SilverLeague\LogViewer\Handler\DataObjectHandler
  * @package silverstripe-logviewer
  * @author  Robbie Averill <robbie@averill.co.nz>
  */
@@ -49,6 +48,8 @@ class DataObjectHandlerTest extends SapphireTest
 
     /**
      * Test that arbitary log levels are all written to the database through the DataObjectHandler
+     *
+     * @covers \SilverLeague\LogViewer\Handler\DataObjectHandler
      */
     public function testWriteToDefaultLogger()
     {
