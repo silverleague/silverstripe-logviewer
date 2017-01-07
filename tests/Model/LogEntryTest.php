@@ -13,8 +13,6 @@ class LogEntryTest extends SapphireTest
 {
     /**
      * Test that LogEntry classes can not be edited
-     *
-     * @covers ::canEdit
      */
     public function testDoNotAllowEditing()
     {

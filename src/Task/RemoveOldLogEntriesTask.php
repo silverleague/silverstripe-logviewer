@@ -97,7 +97,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
         $maxAge = $this->getMaxAge();
 
         $logs = LogEntry::get()
-            ->where(sprintf('DATEDIFF(NOW(), "%s"."Created") > %d', $tableName, $maxAge));
+            ->where(sprintf('"%s"."Created" <= NOW() - INTERVAL \'%d\' DAY', $tableName, $maxAge));
 
         $count = $logs->count();
         if ($count > 0) {

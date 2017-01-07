@@ -4,9 +4,10 @@ namespace SilverLeague\LogViewer\Tests\Task;
 
 use SilverLeague\LogViewer\Model\LogEntry;
 use SilverLeague\LogViewer\Task\RemoveOldLogEntriesTask;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
-use Silverstripe\ORM\FieldType\DBDatetime;
 use SilverStripe\Dev\SapphireTest;
+use Silverstripe\ORM\FieldType\DBDatetime;
 
 /**
  * @coversDefaultClass \SilverLeague\LogViewer\Task\RemoveOldLogEntriesTask
@@ -91,6 +92,7 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
     /**
      * Test that old log entries are removed from the database according to the max age setting
      *
+     * @covers ::removeOldLogs
      * @covers ::run
      * @covers ::process
      */
@@ -100,10 +102,15 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
 
         ob_start();
         $result = (new RemoveOldLogEntriesTask)->process();
+        $second = (new RemoveOldLogEntriesTask)->run(new HTTPRequest('GET', '/'));
         $buffer = ob_get_clean();
 
         $this->assertTrue($result);
         $this->assertContains('Removed 3 logs', $buffer);
+        // Nothing to do the second time
+        $this->assertFalse($second);
+        $this->assertContains('Removed 0 logs', $buffer);
+        $this->assertContains('older than 14 days', $buffer);
     }
 
     /**
