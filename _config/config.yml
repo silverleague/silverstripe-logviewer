@@ -18,3 +18,5 @@ LogViewer:
   cron_schedule: 0 4 * * *
   # The maximum age in days for a LogEntry before it will be removed
   max_log_age: 30
+  # Which Monolog\Logger levels (numberic) to start handling from (see class for examples)
+  minimum_log_level: 300 # WARNING
