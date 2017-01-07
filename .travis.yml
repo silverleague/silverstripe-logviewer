@@ -22,4 +22,10 @@ before_script:
   - cd ~/builds && composer require phpunit/phpunit ^5.7 && cd ss
 
 script:
-  - php ../vendor/bin/phpunit logviewer/tests
+  - php ../vendor/bin/phpunit --coverage-clover=coverage.xml logviewer/tests
+
+# Share coverage results with codecov.io
+after_success:
+  - mv coverage.xml ~/build/$TRAVIS_REPO_SLUG
+  - cd ~/build/$TRAVIS_REPO_SLUG
+  - bash <(curl -s https://codecov.io/bash)
