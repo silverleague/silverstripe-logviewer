@@ -3,6 +3,7 @@
 namespace SilverLeague\LogViewer\Tests\Admin;
 
 use SilverLeague\LogViewer\Admin\LogViewerAdmin;
+use SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\ReadonlyField;
@@ -39,8 +40,6 @@ class LogViewerAdminTest extends FunctionalTest
 
     /**
      * Test that the log entries are returned in reverse order of creation date/time
-     *
-     * @covers ::getList
      */
     public function testLogsShouldBeInReverseOrder()
     {
@@ -51,20 +50,21 @@ class LogViewerAdminTest extends FunctionalTest
 
     /**
      * Test that the GridField "add new" button has been removed
-     *
-     * @covers ::getEditForm
-     * @covers ::getGridFieldName
      */
     public function testNoAddButton()
     {
-        /** @var \SilverStripe\Forms\GridField\GridFieldConfig $gridFieldConfig */
-        $gridFieldConfig = $this->logViewerAdmin
-            ->getEditForm()
-            ->Fields()
-            ->fieldByName($this->logViewerAdmin->getGridFieldName())
-            ->getConfig();
+        $this->assertNull($this->getConfig()->getComponentByType(GridFieldAddNewButton::class));
+    }
 
-        $this->assertNull($gridFieldConfig->getComponentByType(GridFieldAddNewButton::class));
+    /**
+     * Test that there's a "clear all" button
+     */
+    public function testHasClearAllButton()
+    {
+        $this->assertInstanceOf(
+            GridFieldClearAllButton::class,
+            $this->getConfig()->getComponentByType(GridFieldClearAllButton::class)
+        );
     }
 
     /**
@@ -75,5 +75,19 @@ class LogViewerAdminTest extends FunctionalTest
         $summaryFields = $this->logViewerAdmin->getExportFields();
         $this->assertContains('Entry', $summaryFields);
         $this->assertContains('Level', $summaryFields);
+    }
+
+    /**
+     * Get the test GridField's config class
+     *
+     * @return \SilverStripe\Forms\GridField\GridFieldConfig
+     */
+    protected function getConfig()
+    {
+        return $this->logViewerAdmin
+            ->getEditForm()
+            ->Fields()
+            ->fieldByName($this->logViewerAdmin->getGridFieldName())
+            ->getConfig();
     }
 }

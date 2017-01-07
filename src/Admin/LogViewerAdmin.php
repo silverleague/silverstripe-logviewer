@@ -3,6 +3,7 @@
 namespace SilverLeague\LogViewer\Admin;
 
 use SilverLeague\LogViewer\Model\LogEntry;
+use SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\View\Requirements;
@@ -63,6 +64,7 @@ class LogViewerAdmin extends ModelAdmin
         /** @var \SilverStripe\Forms\GridField\GridFieldConfig $gridFieldConfig */
         $config = $gridField->getConfig();
         $config->removeComponentsByType($config->getComponentByType(GridFieldAddNewButton::class));
+        $config->addComponent(new GridFieldClearAllButton('buttons-before-left'));
 
         return $form;
     }
