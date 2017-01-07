@@ -1,0 +1,17 @@
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
+    <testsuite name="silverstripe-logviewer">
+        <directory>tests/</directory>
+    </testsuite>
+    <listeners>
+        <listener class="SilverStripe\Dev\TestListener" />
+    </listeners>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <directory suffix=".php">tests/</directory>
+                <file>tests/bootstrap.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
