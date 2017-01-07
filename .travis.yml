@@ -13,16 +13,13 @@ env:
 
 before_script:
   - composer self-update || true
-  - git clone git://github.com/silverstripe/silverstripe-travis-support.git ~/travis-support
-  - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
-  - cd ~/builds/ss
   - composer install
-  # Install PHPUnit manually, since it cannot be a composer requirement at this point due to
-  # the framework supporting PHP 5.5
-  - cd ~/builds && composer require phpunit/phpunit ^5.7 && cd ss
+  - "if [ \"$DB\" = \"PGSQL\" ]; then composer require silverstripe/postgresql:2.0.x-dev --prefer-dist; fi"
+  - curl https://phar.phpunit.de/phpunit-5.7.5.phar > ./phpunit
+  - chmod +x ./phpunit
 
 script:
-  - php ../vendor/bin/phpunit --coverage-clover=coverage.xml logviewer/tests
+  - ./phpunit --coverage-clover=coverage.xml
 
 # Share coverage results with codecov.io
 after_success:
