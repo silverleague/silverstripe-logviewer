@@ -5,6 +5,7 @@ namespace SilverLeague\LogViewer\Handler;
 use Monolog\Logger;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
+use SilverStripe\Core\Config\Config;
 
 /**
  * The DataObjectHandler allows you to use a SilverStripe DataObject for handling Monolog log entries.
@@ -39,12 +40,13 @@ class DataObjectHandler extends AbstractProcessingHandler
 
     /**
      * @param string  $objectClass The DataObject class to use for handling the write
-     * @param int     $level       The minimum logging level at which this handler will be triggered
+     * @param int     $level       The minimum logging level at which this handler will be triggered (configurable)
      * @param boolean $bubble      Whether the messages that are handled can bubble up the stack or not
      */
     public function __construct($objectClass = self::DEFAULT_CLASS, $level = Logger::DEBUG, $bubble = true)
     {
         $this->setObjectClass($objectClass);
+        $level = $this->getMinimumLogLevel();
         parent::__construct($level, $bubble);
     }
 
@@ -103,5 +105,16 @@ class DataObjectHandler extends AbstractProcessingHandler
     public function getObjectClass()
     {
         return $this->objectClass;
+    }
+
+    /**
+     * Get the minimum Monolog\Logger log level to start catching messages at
+     *
+     * @see \Monolog\Logger
+     * @return int
+     */
+    public function getMinimumLogLevel()
+    {
+        return (int) Config::inst()->get('LogViewer', 'minimum_log_level');
     }
 }
