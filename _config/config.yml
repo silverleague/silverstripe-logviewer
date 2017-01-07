@@ -9,3 +9,12 @@ SilverStripe\Core\Injector\Injector:
       AddDataObjectHandler: [ pushHandler, [ %$DataObjectHandler ] ]
   DataObjectHandler:
     class: SilverLeague\LogViewer\Handler\DataObjectHandler
+
+# Configuration for the cleanup task
+LogViewer:
+  # Whether the cron functionality should run. This does not affect use as a BuildTask.
+  cron_enabled: true
+  # How often the cron should run (default: 4am daily)
+  cron_schedule: 0 4 * * *
+  # The maximum age in days for a LogEntry before it will be removed
+  max_log_age: 30

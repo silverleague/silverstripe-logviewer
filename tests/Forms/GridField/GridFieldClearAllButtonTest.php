@@ -16,7 +16,6 @@ use SilverStripe\ORM\DataList;
 /**
  * Tests for the "clear all" GridField action class
  *
- * @coversDefaultClass \SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton
  * @package silverstripe-logviewer
  * @author  Robbie Averill <robbie@averill.co.nz>
  */

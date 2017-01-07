@@ -9,7 +9,6 @@ use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\ReadonlyField;
 
 /**
- * @coversDefaultClass \SilverLeague\LogViewer\Admin\LogViewerAdmin
  * @package silverstripe-logviewer
  * @author  Robbie Averill <robbie@averill.co.nz>
  */
