@@ -1,6 +1,6 @@
 # silverleague/silverstripe-logviewer
 
-*Add build, quality, coverage and versioning badges here.*
+[![Build Status](https://travis-ci.org/silverleague/silverstripe-logviewer.svg?branch=master)](https://travis-ci.org/silverleague/silverstripe-logviewer) [![Code quality](https://scrutinizer-ci.com/g/silverleague/silverstripe-logviewer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/silverleague/silverstripe-logviewer/?branch=master) [![Code coverage](https://codecov.io/gh/silverleague/silverstripe-logviewer/branch/master/graph/badge.svg)](https://codecov.io/gh/silverleague/silverstripe-logviewer) [![Latest Stable Version](https://poser.pugx.org/silverleague/logviewer/version)](https://packagist.org/packages/silverleague/logviewer) [![Latest Unstable Version](https://poser.pugx.org/silverleague/logviewer/v/unstable)](//packagist.org/packages/silverleague/logviewer)
 
 Show your SilverStripe log entries in the CMS.
 
