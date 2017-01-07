@@ -6,7 +6,6 @@ use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Dev\SapphireTest;
 
 /**
- * @coversDefaultClass \SilverLeague\LogViewer\Model\LogEntry
  * @package silverstripe-logviewer
  * @author  Robbie Averill <robbie@averill.co.nz>
  */

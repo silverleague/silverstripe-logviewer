@@ -1,0 +1,25 @@
+SilverLeague\LogViewer\Model\LogEntry:
+  old_a:
+    Entry: Test log
+    Level: DEBUG
+    Created: '2012-10-11 05:00:00'
+  old_b:
+    Entry: Test log
+    Level: DEBUG
+    Created: '2013-10-11 00:02:00'
+  new_a:
+    Entry: Test log
+    Level: DEBUG
+    Created: '2016-12-25 00:00:00'
+  old_c:
+    Entry: Test log
+    Level: DEBUG
+    Created: '2016-11-11 00:10:00'
+  new_b:
+    Entry: Test log
+    Level: DEBUG
+    Created: '2017-01-01 00:00:01'
+  new_c:
+    Entry: Test log
+    Level: DEBUG
+    Created: '2017-01-08 00:57:00'
