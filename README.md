@@ -26,7 +26,7 @@ This is a plug and play module. Simply install, then run a `dev/build` and flush
 sake dev/build flush=1
 ```
 
-You will now see a "Jobs" tab in the CMS.
+You will now see a "Logs" tab in the CMS.
 
 ## Support
 
