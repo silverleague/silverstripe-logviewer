@@ -41,7 +41,7 @@ class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_Actio
     {
         $button = GridField_FormAction::create($gridField, 'clear', 'Clear all', 'clear', null);
         $button->setAttribute('data-icon', 'clear-all-logs');
-        $button->addExtraClass('font-icon-trash-bin action_clear');
+        $button->addExtraClass('font-icon-trash-bin action_clear action action-delete');
         $button->setForm($gridField->getForm());
 
         return [$this->targetFragment => '<p class="grid-clear-all-button">' . $button->Field() . '</p>'];
