@@ -7,7 +7,6 @@ use SilverLeague\LogViewer\Task\RemoveOldLogEntriesTask;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
-use Silverstripe\ORM\FieldType\DBDatetime;
 
 /**
  * @coversDefaultClass \SilverLeague\LogViewer\Task\RemoveOldLogEntriesTask
@@ -33,7 +32,6 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
     {
         parent::setUp();
         Config::inst()->nest();
-        DBDatetime::set_mock_now('2017-01-08 00:58:00');
     }
 
     /**
@@ -90,7 +88,9 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
     }
 
     /**
-     * Test that old log entries are removed from the database according to the max age setting
+     * Test that old log entries are removed from the database according to the max age setting. The actual date
+     * used for checking is gathered from the SQL server inside the query, so we can't really mock it - using 1 day
+     * and a new record created now instead.
      *
      * @covers ::removeOldLogs
      * @covers ::run
@@ -98,7 +98,9 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
      */
     public function testRemoveOldLogEntries()
     {
-        Config::inst()->update('LogViewer', 'max_log_age', 14);
+        Config::inst()->update('LogViewer', 'max_log_age', 1);
+
+        LogEntry::create(['Entry' => 'Will not be deleted', 'Level' => 'ERROR']);
 
         ob_start();
         $result = (new RemoveOldLogEntriesTask)->process();
@@ -106,11 +108,11 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
         $buffer = ob_get_clean();
 
         $this->assertTrue($result);
-        $this->assertContains('Removed 3 logs', $buffer);
+        $this->assertContains('Removed 6 log(s)', $buffer);
         // Nothing to do the second time
         $this->assertFalse($second);
-        $this->assertContains('Removed 0 logs', $buffer);
-        $this->assertContains('older than 14 days', $buffer);
+        $this->assertContains('Removed 0 log(s)', $buffer);
+        $this->assertContains('older than 1 day(s)', $buffer);
     }
 
     /**

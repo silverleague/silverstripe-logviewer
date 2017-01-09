@@ -104,7 +104,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
             $logs->removeAll();
         }
 
-        echo sprintf('Finished. Removed %d logs older than %d days.', $count, $maxAge) . PHP_EOL;
+        echo sprintf('Finished. Removed %d log(s) older than %d day(s).', $count, $maxAge) . PHP_EOL;
 
         return $count > 0;
     }
