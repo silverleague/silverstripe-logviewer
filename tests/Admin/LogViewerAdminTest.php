@@ -6,6 +6,7 @@ use SilverLeague\LogViewer\Admin\LogViewerAdmin;
 use SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\ReadonlyField;
 
 /**
@@ -63,6 +64,17 @@ class LogViewerAdminTest extends FunctionalTest
         $this->assertInstanceOf(
             GridFieldClearAllButton::class,
             $this->getConfig()->getComponentByType(GridFieldClearAllButton::class)
+        );
+    }
+
+    /**
+     * Test that the GridField has a Paginator component
+     */
+    public function testHasPagination()
+    {
+        $this->assertInstanceOf(
+            GridFieldPaginator::class,
+            $this->getConfig()->getComponentByType(GridFieldPaginator::class)
         );
     }
 
