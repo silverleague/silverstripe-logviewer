@@ -10,6 +10,11 @@
             "name": "Robbie Averill",
             "email": "robbie@silverstripe.com",
             "role": "Maintainer"
+        },
+        {
+            "name": "Simon Erkelens",
+            "email": "simonerkelens@silverstripe.com",
+            "role": "Developer"
         }
     ],
     "require": {
