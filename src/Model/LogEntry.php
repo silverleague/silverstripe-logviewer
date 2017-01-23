@@ -3,6 +3,8 @@
 namespace SilverLeague\LogViewer\Model;
 
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\PermissionProvider;
 
 /**
  * A LogEntry is a set of data provided from Monolog via the DataObjectHandler
@@ -10,7 +12,7 @@ use SilverStripe\ORM\DataObject;
  * @package silverstripe-logviewer
  * @author  Robbie Averill <robbie@averill.co.nz>
  */
-class LogEntry extends DataObject
+class LogEntry extends DataObject implements PermissionProvider
 {
     /**
      * {@inheritDoc}
@@ -35,12 +37,54 @@ class LogEntry extends DataObject
     ];
 
     /**
-     * We should never need to edit log entries
+     * Permissions
+     */
+    public function providePermissions()
+    {
+        return array(
+            'DELETE_ENTRY' => array(
+                'name'     => _t('LogEntry.PERMISSION_DELETE_DESCRIPTION', 'Delete log entries'),
+                'category' => _t('Permissions.LOGENTRY_CATEGORY', 'Log entry permissions'),
+                'help'     => _t('LogEntry.PERMISSION_DELETE_HELP', 'Permission required to delete existing log entries.')
+            ),
+            'VIEW_ENTRY'   => array(
+                'name'     => _t('LogEntry.PERMISSION_VIEW_DESCRIPTION', 'View log entries'),
+                'category' => _t('Permissions.LOGENTRY_CATEGORY', 'Log entry permissions'),
+                'help'     => _t('LogEntry.PERMISSION_VIEW_HELP', 'Permission required to view existing log entries.')
+            ),
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function canCreate($member = null, $context = [])
+    {
+        return false;
+    }
+
+    /**
+     * We should never edit log entries
      *
      * {@inheritDoc}
      */
-    public function canEdit($member = false, $context = [])
+    public function canEdit($member = null)
     {
         return false;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function canDelete($member = null)
+    {
+        return Permission::checkMember($member, array('DELETE_ENTRY', 'CMS_ACCESS_LogViewerAdmin'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function canView($member = null)
+    {
+        return Permission::checkMember($member, array('VIEW_ENTRY', 'CMS_ACCESS_LogViewerAdmin'));
     }
 }
