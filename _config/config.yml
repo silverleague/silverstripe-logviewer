@@ -9,6 +9,10 @@ SilverStripe\Core\Injector\Injector:
       AddDataObjectHandler: [ pushHandler, [ %$DataObjectHandler ] ]
   DataObjectHandler:
     class: SilverLeague\LogViewer\Handler\DataObjectHandler
+# Configuration for the entries
+SilverLeague\LogViewer\Model\LogEntry:
+  # Format the output? Default: yes
+  format_entry: true
 
 # Configuration for the cleanup task
 LogViewer:

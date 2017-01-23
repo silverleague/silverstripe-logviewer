@@ -3,7 +3,7 @@
 namespace SilverLeague\LogViewer\Handler;
 
 use Monolog\Logger;
-use Monolog\Formatter\LineFormatter;
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use SilverStripe\Core\Config\Config;
 
@@ -55,7 +55,7 @@ class DataObjectHandler extends AbstractProcessingHandler
      */
     protected function getDefaultFormatter()
     {
-        return new LineFormatter('%message% %context% %extra%');
+        return new JsonFormatter('%message% %context% %extra%');
     }
 
     /**
