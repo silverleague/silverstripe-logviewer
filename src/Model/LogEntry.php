@@ -41,22 +41,24 @@ class LogEntry extends DataObject implements PermissionProvider
      */
     public function providePermissions()
     {
-        return array(
-            'DELETE_ENTRY' => array(
-                'name'     => _t('LogEntry.PERMISSION_DELETE_DESCRIPTION', 'Delete log entries'),
+        return [
+            'DELETE_ENTRY' => [
+                'name' => _t('LogEntry.PERMISSION_DELETE_DESCRIPTION', 'Delete log entries'),
                 'category' => _t('Permissions.LOGENTRY_CATEGORY', 'Log entry permissions'),
-                'help'     => _t('LogEntry.PERMISSION_DELETE_HELP', 'Permission required to delete existing log entries.')
-            ),
-            'VIEW_ENTRY'   => array(
-                'name'     => _t('LogEntry.PERMISSION_VIEW_DESCRIPTION', 'View log entries'),
+                'help' => _t('LogEntry.PERMISSION_DELETE_HELP', 'Permission required to delete existing log entries.')
+            ],
+            'VIEW_ENTRY' => [
+                'name' => _t('LogEntry.PERMISSION_VIEW_DESCRIPTION', 'View log entries'),
                 'category' => _t('Permissions.LOGENTRY_CATEGORY', 'Log entry permissions'),
-                'help'     => _t('LogEntry.PERMISSION_VIEW_HELP', 'Permission required to view existing log entries.')
-            ),
-        );
+                'help' => _t('LogEntry.PERMISSION_VIEW_HELP', 'Permission required to view existing log entries.')
+            ]
+        ];
     }
 
     /**
-     * {@inheritdoc}
+     * Log entries are created programmatically, they should never be created manually
+     *
+     * {@inheritDoc}
      */
     public function canCreate($member = null, $context = [])
     {
@@ -77,7 +79,7 @@ class LogEntry extends DataObject implements PermissionProvider
      */
     public function canDelete($member = null)
     {
-        return Permission::checkMember($member, array('DELETE_ENTRY', 'CMS_ACCESS_LogViewerAdmin'));
+        return Permission::checkMember($member, ['DELETE_ENTRY', 'CMS_ACCESS_LogViewerAdmin']);
     }
 
     /**
@@ -85,6 +87,6 @@ class LogEntry extends DataObject implements PermissionProvider
      */
     public function canView($member = null)
     {
-        return Permission::checkMember($member, array('VIEW_ENTRY', 'CMS_ACCESS_LogViewerAdmin'));
+        return Permission::checkMember($member, ['VIEW_ENTRY', 'CMS_ACCESS_LogViewerAdmin']);
     }
 }
