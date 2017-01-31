@@ -41,7 +41,7 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
     {
         $task = new RemoveOldLogEntriesTask;
         $this->assertContains('Remove LogEntry', $task->getTitle());
-        $this->assertContains('Will run as a cron task', $task->getDescription());
+        $this->assertContains('that are older than', $task->getDescription());
         $this->assertSame('RemoveOldLogEntriesTask', Config::inst()->get(RemoveOldLogEntriesTask::class, 'segment'));
     }
 

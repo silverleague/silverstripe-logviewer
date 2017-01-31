@@ -28,8 +28,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
     /**
      * {@inheritDoc}
      */
-    protected $description = 'Removes LogEntry records that are older than the configured '
-        . '`LogViewer.max_log_age` setting. Will run as a cron task unless disabled via configuration.';
+    protected $description = 'Removes LogEntry records that are older than the configured `LogViewer.max_log_age`.';
 
     /**
      * BuildTask implementation

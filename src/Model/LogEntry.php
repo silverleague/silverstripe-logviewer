@@ -74,6 +74,7 @@ class LogEntry extends DataObject implements PermissionProvider
     {
         return false;
     }
+
     /**
      * {@inheritdoc}
      */

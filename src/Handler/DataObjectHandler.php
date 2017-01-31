@@ -5,6 +5,7 @@ namespace SilverLeague\LogViewer\Handler;
 use Monolog\Logger;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
+use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Core\Config\Config;
 
 /**
@@ -22,7 +23,7 @@ class DataObjectHandler extends AbstractProcessingHandler
      *
      * @var string
      */
-    const DEFAULT_CLASS = 'SilverLeague\\LogViewer\\Model\\LogEntry';
+    const DEFAULT_CLASS = LogEntry::class;
 
     /**
      * The default DateTime format to use for storing the log timestamp
