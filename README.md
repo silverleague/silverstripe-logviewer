@@ -6,7 +6,7 @@ Show your SilverStripe log entries in the CMS.
 
 ## Requirements
 
-* PHP 5.6+
+* PHP 5.5+
 * SilverStripe ^4.0
 * Composer
 
@@ -82,6 +82,12 @@ You can also remove **all log entries entirely** from the Logs interface in the 
 If you encounter a problem with our module then please let us know by raising an issue on our [issue tracker](https://github.com/silverleague/silverstripe-logviewer/issues).
 
 Ensure you tell us which version of this module you are using, as well as which versions of PHP and SilverStripe framework you are using. If you aren't sure, you can find out by running the following commands from your command line: `php -v`, `composer show silverleague/logviewer` and `composer show silverstripe/framework`.
+
+| Role          | Name                                              |
+| ------------- | ------------------------------------------------- |
+| Maintainer    | [robbieaverill](https://github.com/robbieaverill) |
+| Co-maintainer | TBC                                               |
+| Advocate      | TBC                                               |
 
 ## Contributing
 
