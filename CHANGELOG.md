@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.1.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.1.0) (2017-01-31)
+[Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.2...1.1.0)
+
+**Merged pull requests:**
+
+- Support PHP 5.5. Reduce to PHPUnit 4.8. Add roles to readme. Update Travis configuration. [\#21](https://github.com/silverleague/silverstripe-logviewer/pull/21) ([robbieaverill](https://github.com/robbieaverill))
+- FIX Remove second paginator. The original is invisible, but will be fixed in the framework. [\#18](https://github.com/silverleague/silverstripe-logviewer/pull/18) ([robbieaverill](https://github.com/robbieaverill))
+- MINOR Change array declarations for consistency. Fix line length. Add description to canCreate. [\#17](https://github.com/silverleague/silverstripe-logviewer/pull/17) ([robbieaverill](https://github.com/robbieaverill))
+
 ## [1.0.2](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.2) (2017-01-23)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.1...1.0.2)
 
@@ -18,12 +27,8 @@
 ## [1.0.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0) (2017-01-09)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/0.1.0...1.0.0)
 
-**Implemented enhancements:**
+**Merged pull requests:**
 
-- Add documentation [\#8](https://github.com/silverleague/silverstripe-logviewer/issues/8)
--  Add button to CMS to remove old log entries manually [\#4](https://github.com/silverleague/silverstripe-logviewer/issues/4)
-- Add `BuildTask`/`CronTask`/both to remove old log entries automatically [\#3](https://github.com/silverleague/silverstripe-logviewer/issues/3)
-- Add SilverStripe config handling for which log levels should be handled [\#2](https://github.com/silverleague/silverstripe-logviewer/issues/2)
 - DOCS Update readme to include a screenshot, configuration and cleanup examples [\#9](https://github.com/silverleague/silverstripe-logviewer/pull/9) ([robbieaverill](https://github.com/robbieaverill))
 
 ## [0.1.0](https://github.com/silverleague/silverstripe-logviewer/tree/0.1.0) (2017-01-07)
