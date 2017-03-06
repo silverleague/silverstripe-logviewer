@@ -1,7 +1,6 @@
 ---
 Name: logviewerconfig
-After:
-  - #logging
+After: '#logging'
 ---
 SilverStripe\Core\Injector\Injector:
   Logger:
