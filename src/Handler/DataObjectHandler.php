@@ -116,6 +116,6 @@ class DataObjectHandler extends AbstractProcessingHandler
      */
     public function getMinimumLogLevel()
     {
-        return (int) Config::inst()->get('LogViewer', 'minimum_log_level');
+        return (int) Config::inst()->get(LogEntry::class, 'minimum_log_level');
     }
 }

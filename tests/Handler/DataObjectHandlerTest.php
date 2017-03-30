@@ -2,6 +2,7 @@
 
 namespace SilverLeague\LogViewer\Tests\Handler;
 
+use Psr\Log\LoggerInterface;
 use SilverLeague\LogViewer\Handler\DataObjectHandler;
 use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Dev\SapphireTest;
@@ -40,9 +41,7 @@ class DataObjectHandlerTest extends SapphireTest
     {
         parent::setUp();
 
-        Config::nest();
-
-        $this->logger = Injector::inst()->get('Logger');
+        $this->logger = Injector::inst()->get(LoggerInterface::class);
 
         // Clear the default handlers so we can test precisely
         $this->originalHandlers = $this->logger->getHandlers();
@@ -67,7 +66,7 @@ class DataObjectHandlerTest extends SapphireTest
      */
     public function testDontLogMessagesLowerThanMinimumLever()
     {
-        Config::inst()->update('LogViewer', 'minimum_log_level', 300);
+        Config::modify()->set(LogEntry::class, 'minimum_log_level', 300);
         LogEntry::get()->removeAll();
         $this->logger->pushHandler(new DataObjectHandler);
 
@@ -86,7 +85,7 @@ class DataObjectHandlerTest extends SapphireTest
      */
     public function testGetMinimumLogLevelFromConfiguration()
     {
-        Config::inst()->update('LogViewer', 'minimum_log_level', 123);
+        Config::modify()->set(LogEntry::class, 'minimum_log_level', 123);
         $this->assertSame(123, (new DataObjectHandler)->getMinimumLogLevel());
     }
 
@@ -97,8 +96,6 @@ class DataObjectHandlerTest extends SapphireTest
      */
     public function tearDown()
     {
-        Config::unnest();
-
         $this->logger->setHandlers($this->originalHandlers);
 
         parent::tearDown();

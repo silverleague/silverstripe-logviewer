@@ -13,6 +13,7 @@
         }
     ],
     "require": {
+        "silverstripe/admin": "^1@dev",
         "silverstripe/framework": "^4.0@dev",
         "monolog/monolog": "~1.11",
         "silverstripe/crontask": "2.x-dev"
@@ -22,7 +23,11 @@
     },
     "autoload": {
         "psr-4": {
-            "SilverLeague\\LogViewer\\": "src/",
+            "SilverLeague\\LogViewer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "SilverLeague\\LogViewer\\Tests\\": "tests/"
         }
     },

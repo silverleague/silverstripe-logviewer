@@ -2,8 +2,8 @@
 
 namespace SilverLeague\LogViewer\Tests\Model;
 
-use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Dev\SapphireTest;
+use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Security\Security;
 
 /**
@@ -66,5 +66,4 @@ class LogEntryTest extends SapphireTest
         $deleteTrue = LogEntry::create()->canDelete();
         $this->assertTrue($deleteTrue);
     }
-
 }
