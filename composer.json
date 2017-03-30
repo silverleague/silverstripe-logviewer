@@ -13,13 +13,13 @@
         }
     ],
     "require": {
-        "silverstripe/admin": "^1@dev",
+        "silverstripe/admin": "^1.0@dev",
         "silverstripe/framework": "^4.0@dev",
         "monolog/monolog": "~1.11",
         "silverstripe/crontask": "2.x-dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8"
+        "phpunit/phpunit": "^5.7"
     },
     "autoload": {
         "psr-4": {
@@ -35,5 +35,7 @@
         "branch-alias": {
             "dev-master": "1.2.x-dev"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
