@@ -6,7 +6,7 @@ Show your SilverStripe log entries in the CMS.
 
 ## Requirements
 
-* PHP 5.5+
+* PHP 5.6+
 * SilverStripe ^4.0
 * Composer
 
@@ -35,11 +35,9 @@ There are a few configuration options for this module. These can be modified in 
 ```yml
 ---
 Name: mysitelogviewer
-After:
-  - '#logviewerconfig'
 ---
 # Configuration for the cleanup task
-LogViewer:
+SilverLeague\LogViewer\Model\LogEntry:
   # Whether the cleanup task should be run by a cron task (you need to figure the cron yourself)
   # Type: bool
   cron_enabled: true

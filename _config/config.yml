@@ -1,17 +1,15 @@
 ---
 Name: logviewerconfig
-After:
-  - #logging
 ---
 SilverStripe\Core\Injector\Injector:
-  Logger:
+  LoggerInterface:
     calls:
       AddDataObjectHandler: [ pushHandler, [ %$DataObjectHandler ] ]
   DataObjectHandler:
     class: SilverLeague\LogViewer\Handler\DataObjectHandler
 
 # Configuration for the cleanup task
-LogViewer:
+SilverLeague\LogViewer\Model\LogEntry:
   # Whether the cron functionality should run. This does not affect use as a BuildTask.
   # Note: you need to configure silverstripe/crontask yourself.
   cron_enabled: true

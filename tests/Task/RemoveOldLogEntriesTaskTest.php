@@ -26,15 +26,6 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
     protected static $fixture_file = 'RemoveOldLogEntriesTaskTest.yml';
 
     /**
-     * {@inheritDoc}
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        Config::inst()->nest();
-    }
-
-    /**
      * Test that the configuration properties are set correctly
      */
     public function testClassProperties()
@@ -52,7 +43,7 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
      */
     public function testSettingsAreConfigurable($getter, $setting, $value)
     {
-        Config::inst()->update('LogViewer', $setting, $value);
+        Config::modify()->set(LogEntry::class, $setting, $value);
         $this->assertSame($value, (new RemoveOldLogEntriesTask)->{$getter}());
     }
 
@@ -82,7 +73,7 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
             ->expects($this->never())
             ->method('removeOldLogs');
 
-        Config::inst()->update('LogViewer', 'cron_enabled', false);
+        Config::modify()->set(LogEntry::class, 'cron_enabled', false);
 
         $this->assertFalse($mock->process());
     }
@@ -98,7 +89,7 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
      */
     public function testRemoveOldLogEntries()
     {
-        Config::inst()->update('LogViewer', 'max_log_age', 1);
+        Config::modify()->set(LogEntry::class, 'max_log_age', 1);
 
         LogEntry::create(['Entry' => 'Will not be deleted', 'Level' => 'ERROR']);
 
@@ -113,14 +104,5 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
         $this->assertFalse($second);
         $this->assertContains('Removed 0 log(s)', $buffer);
         $this->assertContains('older than 1 day(s)', $buffer);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function tearDown()
-    {
-        Config::inst()->unnest();
-        parent::tearDown();
     }
 }

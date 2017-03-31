@@ -62,7 +62,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      */
     public function getSchedule()
     {
-        return Config::inst()->get('LogViewer', 'cron_schedule');
+        return Config::inst()->get(LogEntry::class, 'cron_schedule');
     }
 
     /**
@@ -72,7 +72,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      */
     public function getMaxAge()
     {
-        return (int) Config::inst()->get('LogViewer', 'max_log_age');
+        return (int) Config::inst()->get(LogEntry::class, 'max_log_age');
     }
 
     /**
@@ -82,7 +82,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      */
     public function getCronEnabled()
     {
-        return (bool) Config::inst()->get('LogViewer', 'cron_enabled');
+        return (bool) Config::inst()->get(LogEntry::class, 'cron_enabled');
     }
 
     /**

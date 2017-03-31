@@ -41,7 +41,7 @@ class GridFieldClearAllButtonTest extends SapphireTest
         $config = GridFieldConfig::create()->addComponent(new GridFieldClearAllButton('before'));
         $this->gridField = GridField::create('logs', 'logs', DataList::create(LogEntry::class), $config);
         $form = Form::create(
-            Controller::create(),
+            null,
             'foobar',
             FieldList::create([$this->gridField]),
             FieldList::create()
