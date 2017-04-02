@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.1.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.1.0) (2017-01-31)
+## [0.3.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.1.0) (2017-01-31)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.2...1.1.0)
 
 **Merged pull requests:**
@@ -9,14 +9,14 @@
 - FIX Remove second paginator. The original is invisible, but will be fixed in the framework. [\#18](https://github.com/silverleague/silverstripe-logviewer/pull/18) ([robbieaverill](https://github.com/robbieaverill))
 - MINOR Change array declarations for consistency. Fix line length. Add description to canCreate. [\#17](https://github.com/silverleague/silverstripe-logviewer/pull/17) ([robbieaverill](https://github.com/robbieaverill))
 
-## [1.0.2](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.2) (2017-01-23)
+## [0.2.2](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.2) (2017-01-23)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.1...1.0.2)
 
 **Merged pull requests:**
 
 - Provide permissions correctly [\#15](https://github.com/silverleague/silverstripe-logviewer/pull/15) ([Firesphere](https://github.com/Firesphere))
 
-## [1.0.1](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.1) (2017-01-20)
+## [0.2.1](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.1) (2017-01-20)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.0...1.0.1)
 
 **Merged pull requests:**
@@ -24,7 +24,7 @@
 - FIX Bootstrap style for clear all button, and add paginator for LogViewerAdmin [\#12](https://github.com/silverleague/silverstripe-logviewer/pull/12) ([robbieaverill](https://github.com/robbieaverill))
 - Update composer alias for next dev version [\#10](https://github.com/silverleague/silverstripe-logviewer/pull/10) ([robbieaverill](https://github.com/robbieaverill))
 
-## [1.0.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0) (2017-01-09)
+## [0.2.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0) (2017-01-09)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/0.1.0...1.0.0)
 
 **Merged pull requests:**
