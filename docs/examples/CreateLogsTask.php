@@ -2,6 +2,7 @@
 
 namespace SilverLeague\LogViewer\Task;
 
+use Psr\Log\LoggerInterface;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\BuildTask;
 
@@ -23,7 +24,7 @@ class CreateLogsTask extends BuildTask
      */
     public function run($request)
     {
-        $logger = Injector::inst()->get('Logger');
+        $logger = Injector::inst()->get(LoggerInterface::class);
         $logger->addDebug('Detailed debug information');
         $logger->addInfo('Interesting events. Examples: User logs in, SQL logs.');
         $logger->addNotice('Uncommon events');
