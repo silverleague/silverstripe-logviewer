@@ -84,7 +84,7 @@ Ensure you tell us which version of this module you are using, as well as which 
 | Role          | Name                                              |
 | ------------- | ------------------------------------------------- |
 | Maintainer    | [robbieaverill](https://github.com/robbieaverill) |
-| Co-maintainer | TBC                                               |
+| Co-maintainer | [Firesphere](https://github.com/Firesphere)       |
 | Advocate      | TBC                                               |
 
 ## Contributing
