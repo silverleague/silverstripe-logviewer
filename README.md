@@ -26,13 +26,13 @@ sake dev/build flush=1
 
 You will now see a "Logs" tab in the CMS:
 
-![Preview](docs/images/preview-list.jpg)
+![Preview](docs/images/preview-list.png)
 
 ## Configuration
 
 There are a few configuration options for this module. These can be modified in your YAML configuration, for example - `mysite/_config/logviewer.yml`:
 
-```yml
+```yaml
 ---
 Name: mysitelogviewer
 ---

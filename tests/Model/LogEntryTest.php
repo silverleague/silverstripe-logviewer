@@ -2,9 +2,10 @@
 
 namespace SilverLeague\LogViewer\Tests\Model;
 
+use SilverStripe\Core\Convert;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\LiteralField;
 use SilverLeague\LogViewer\Model\LogEntry;
-use SilverStripe\Security\Security;
 
 /**
  * @package silverstripe-logviewer
@@ -69,5 +70,28 @@ class LogEntryTest extends SapphireTest
         $this->logInWithPermission('ADMIN');
         $deleteTrue = LogEntry::create()->canDelete();
         $this->assertTrue($deleteTrue);
+    }
+
+    /**
+     * Ensure that the contents are JSON encoded and pretty printed, and that the CSS class is correct
+     */
+    public function testLogEntriesAreFormattedAsJson()
+    {
+        $data = [
+            'foo' => [
+                'bar' => 'baz'
+            ],
+            'boo'
+        ];
+
+        $entry = LogEntry::create();
+        $entry->Entry = Convert::raw2json($data);
+
+        $fields = $entry->getCMSFields();
+        $field = $fields->fieldByName('Root.Main.Entry');
+
+        $this->assertInstanceOf(LiteralField::class, $field);
+        $this->assertContains(Convert::raw2json($data, JSON_PRETTY_PRINT), $field->getContent());
+        $this->assertContains('<pre class="logviewer-logentry-entry"><code>', $field->getContent());
     }
 }

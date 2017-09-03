@@ -1,0 +1,17 @@
+.cms {
+  .grid-field {
+    &__table {
+      .col-Entry {
+        font-family: monospace;
+      }
+    }
+
+    &__icon-action.edit-link {
+      display: none;
+    }
+  }
+
+  .logviewer-logentry-entry {
+    white-space: pre-wrap;
+  }
+}
