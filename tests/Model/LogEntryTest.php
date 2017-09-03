@@ -48,8 +48,10 @@ class LogEntryTest extends SapphireTest
      */
     public function testAllowView()
     {
+        $this->logOut();
         $viewFalse = LogEntry::create()->canView(null);
         $this->assertFalse($viewFalse);
+
         $this->logInWithPermission('ADMIN');
         $viewTrue = LogEntry::create()->canView();
         $this->assertTrue($viewTrue);
@@ -60,8 +62,10 @@ class LogEntryTest extends SapphireTest
      */
     public function testAllowDelete()
     {
+        $this->logOut();
         $deleteFalse = LogEntry::create()->canDelete(null);
         $this->assertFalse($deleteFalse);
+
         $this->logInWithPermission('ADMIN');
         $deleteTrue = LogEntry::create()->canDelete();
         $this->assertTrue($deleteTrue);
