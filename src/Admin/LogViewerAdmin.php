@@ -16,28 +16,16 @@ use SilverStripe\View\Requirements;
  */
 class LogViewerAdmin extends ModelAdmin
 {
-    /**
-     * {@inheritDoc}
-     */
     private static $url_segment = 'logs';
 
-    /**
-     * {@inheritDoc}
-     */
     private static $menu_title = 'Logs';
 
     private static $menu_icon_class = 'font-icon-list';
 
-    /**
-     * {@inheritDoc}
-     */
     private static $managed_models = [
         LogEntry::class
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     public $showImportForm = false;
 
     /**
@@ -45,10 +33,10 @@ class LogViewerAdmin extends ModelAdmin
      *
      * {@inheritDoc}
      */
-    public function init()
+    protected function init()
     {
         parent::init();
-        Requirements::css(LOGVIEWER_DIR . '/assets/scss/logviewer.css');
+        Requirements::css('silverleague/logviewer:assets/scss/logviewer.css');
     }
 
     /**

@@ -14,27 +14,51 @@ use SilverStripe\Security\PermissionProvider;
  */
 class LogEntry extends DataObject implements PermissionProvider
 {
-    /**
-     * {@inheritDoc}
-     */
     private static $table_name = 'LogEntry';
 
-    /**
-     * {@inheritDoc}
-     */
     private static $db = [
         'Entry'    => 'Text',
         'Level'    => 'Varchar'
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     private static $summary_fields = [
         'Entry',
         'Created',
         'Level'
     ];
+
+    /**
+     * Whether the cron functionality should run. This does not affect use as a BuildTask.
+     * Note: you need to configure silverstripe/crontask yourself.
+     *
+     * @config
+     * @var bool
+     */
+    private static $cron_enabled = true;
+
+    /**
+     * How often the cron should run (default: 4am daily)
+     *
+     * @config
+     * @var string
+     */
+    private static $cron_schedule = '0 4 * * *';
+
+    /**
+     * The maximum age in days for a LogEntry before it will be removed
+     *
+     * @config
+     * @var int
+     */
+    private static $max_log_age = 30;
+
+    /**
+     * Which Monolog\Logger levels (numeric) to start handling from (see class for examples)
+     *
+     * @config
+     * @var integer
+     */
+    private static $minimum_log_level = 300;
 
     /**
      * Permissions
@@ -75,17 +99,11 @@ class LogEntry extends DataObject implements PermissionProvider
         return false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function canDelete($member = null)
     {
         return Permission::checkMember($member, ['DELETE_ENTRY', 'CMS_ACCESS_LogViewerAdmin']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function canView($member = null)
     {
         return Permission::checkMember($member, ['VIEW_ENTRY', 'CMS_ACCESS_LogViewerAdmin']);
