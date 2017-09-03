@@ -25,7 +25,8 @@ class LogViewerAdmin extends ModelAdmin
      * {@inheritDoc}
      */
     private static $menu_title = 'Logs';
-    // private static $menu_icon = '';
+
+    private static $menu_icon_class = 'font-icon-list';
 
     /**
      * {@inheritDoc}
