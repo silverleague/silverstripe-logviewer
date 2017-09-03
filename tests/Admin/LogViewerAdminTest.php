@@ -4,6 +4,7 @@ namespace SilverLeague\LogViewer\Tests\Admin;
 
 use SilverLeague\LogViewer\Admin\LogViewerAdmin;
 use SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldPaginator;
@@ -34,7 +35,11 @@ class LogViewerAdminTest extends FunctionalTest
     {
         parent::setUp();
 
+        $request = new HTTPRequest('GET', '/');
+        $request->setSession($this->session());
+
         $this->logViewerAdmin = new LogViewerAdmin;
+        $this->logViewerAdmin->setRequest($request);
         $this->logViewerAdmin->doInit();
     }
 

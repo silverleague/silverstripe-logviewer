@@ -6,6 +6,7 @@ use SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton;
 use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\FixtureFactory;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
@@ -115,7 +116,7 @@ class GridFieldClearAllButtonTest extends SapphireTest
      */
     protected function createDummyLogs($limit = 5)
     {
-        $factory = Injector::inst()->create('FixtureFactory');
+        $factory = Injector::inst()->create(FixtureFactory::class);
 
         for ($i = 1; $i <= $limit; $i++) {
             $factory->createObject(
