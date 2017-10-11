@@ -2,7 +2,7 @@ language: php
 
 env:
   global:
-    - COMPOSER_ROOT_VERSION="4.0.x-dev"
+    - COMPOSER_ROOT_VERSION="1.0.x-dev"
 
 matrix:
   include:
@@ -17,15 +17,15 @@ before_script:
   - phpenv rehash
   - phpenv config-rm xdebug.ini
 
-  - composer install --prefer-dist
+  - composer validate
   - composer require --prefer-dist --no-update silverstripe/recipe-core:1.0.x-dev
   - if [[ $DB == PGSQL ]]; then composer require --prefer-dist --no-update silverstripe/postgresql:2.0.x-dev; fi
   - composer update
 
 script:
-  - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit tests/; fi
+  - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit; fi
   - if [[ $PHPUNIT_COVERAGE_TEST ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml; fi
-  - if [[ $PHPCS_TEST ]]; then vendor/bin/phpcs --standard=framework/phpcs.xml.dist src/ tests/ ; fi
+  - if [[ $PHPCS_TEST ]]; then vendor/bin/phpcs --standard=vendor/silverstripe/framework/phpcs.xml.dist src/ tests/ ; fi
 
 after_success:
   - if [[ $PHPUNIT_COVERAGE_TEST ]]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml; fi
