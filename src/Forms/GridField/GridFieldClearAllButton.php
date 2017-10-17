@@ -39,13 +39,13 @@ class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_Actio
      */
     public function getHTMLFragments($gridField)
     {
-        $button = GridField_FormAction::create($gridField, 'clear', 'Clear all', 'clear', null);
-        $button->setAttribute('data-icon', 'clear-all-logs');
-        $button->addExtraClass('font-icon-trash-bin action_clear action action-delete btn btn-secondary');
-        $button->setForm($gridField->getForm());
+        $button = GridField_FormAction::create($gridField, 'clear', 'Clear all', 'clear', null)
+            ->setAttribute('data-icon', 'clear-all-logs')
+            ->addExtraClass('font-icon-trash-bin action_clear no-ajax action-delete btn btn-secondary')
+            ->setForm($gridField->getForm());
 
         return [
-            $this->targetFragment => '<p class="grid-clear-all-button grid-print-button">' . $button->Field() . '</p>'
+            $this->targetFragment => '<p class="grid-clear-all-button">' . $button->Field() . '</p>'
         ];
     }
 
@@ -67,6 +67,8 @@ class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_Actio
         }
 
         $gridField->getList()->removeAll();
+
+        return $gridField->redirectBack();
     }
 
     /**

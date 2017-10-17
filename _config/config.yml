@@ -2,20 +2,6 @@
 Name: logviewerconfig
 ---
 SilverStripe\Core\Injector\Injector:
-  LoggerInterface:
+  Psr\Log\LoggerInterface:
     calls:
-      AddDataObjectHandler: [ pushHandler, [ %$DataObjectHandler ] ]
-  DataObjectHandler:
-    class: SilverLeague\LogViewer\Handler\DataObjectHandler
-
-# Configuration for the cleanup task
-SilverLeague\LogViewer\Model\LogEntry:
-  # Whether the cron functionality should run. This does not affect use as a BuildTask.
-  # Note: you need to configure silverstripe/crontask yourself.
-  cron_enabled: true
-  # How often the cron should run (default: 4am daily)
-  cron_schedule: 0 4 * * *
-  # The maximum age in days for a LogEntry before it will be removed
-  max_log_age: 30
-  # Which Monolog\Logger levels (numeric) to start handling from (see class for examples)
-  minimum_log_level: 300 # WARNING
+      AddDataObjectHandler: [ pushHandler, [ %$SilverLeague\LogViewer\Handler\DataObjectHandler ] ]
