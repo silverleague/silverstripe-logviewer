@@ -45,7 +45,7 @@ class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_Actio
             ->setForm($gridField->getForm());
 
         return [
-            $this->targetFragment => '<p class="grid-clear-all-button">' . $button->Field() . '</p>'
+            $this->targetFragment => $button->Field()
         ];
     }
 
