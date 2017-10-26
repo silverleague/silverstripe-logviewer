@@ -70,7 +70,6 @@ class GridFieldClearAllButtonTest extends SapphireTest
         $this->assertContains('Clear all', $fragments['before']);
         $this->assertContains('clear-all-logs', $fragments['before']);
         $this->assertContains('font-icon-trash-bin action_clear', $fragments['before']);
-        $this->assertContains('<p class="grid-clear-all-button">', $fragments['before']);
     }
 
     /**
