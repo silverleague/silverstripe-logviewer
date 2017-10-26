@@ -1,7 +1,7 @@
 {
     "name": "silverleague/logviewer",
     "description": "View your SilverStripe logs from inside the CMS",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "homepage": "https://github.com/silverleague/silverstripe-logviewer",
     "license": "MIT",
     "keywords": ["silverstripe", "error", "cms", "log", "monolog"],
@@ -31,7 +31,10 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
-        }
+        },
+        "expose": [
+            "client/dist"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
