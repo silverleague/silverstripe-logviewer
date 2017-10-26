@@ -1,9 +1,30 @@
 # Change Log
 
+## [1.0.0-beta1](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0-beta1) (2017-10-26)
+[Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.0-alpha1...1.0.0-beta1)
+
+**Implemented enhancements:**
+
+- Format JSON part of the error message [\#13](https://github.com/silverleague/silverstripe-logviewer/issues/13)
+- Add a ModelAdmin icon other than the default [\#11](https://github.com/silverleague/silverstripe-logviewer/issues/11)
+
+**Fixed bugs:**
+
+- Circular dependency error from a dependency of silverstripe/config [\#29](https://github.com/silverleague/silverstripe-logviewer/issues/29)
+
+**Merged pull requests:**
+
+- Removed unnecessary paragraph tags causing other buttons to become askew [\#36](https://github.com/silverleague/silverstripe-logviewer/pull/36) ([zanderwar](https://github.com/zanderwar))
+- Changed type to vendor module [\#34](https://github.com/silverleague/silverstripe-logviewer/pull/34) ([zanderwar](https://github.com/zanderwar))
+- NEW Add "list" icon for ModelAdmin [\#33](https://github.com/silverleague/silverstripe-logviewer/pull/33) ([robbieaverill](https://github.com/robbieaverill))
+- NEW Format log entries as JSON, replace Compass with webpack, update screenshot [\#32](https://github.com/silverleague/silverstripe-logviewer/pull/32) ([robbieaverill](https://github.com/robbieaverill))
+- FIX Update namespace for LoggerInterface in config, move config to statics, fix delete all button [\#31](https://github.com/silverleague/silverstripe-logviewer/pull/31) ([robbieaverill](https://github.com/robbieaverill))
+- FIX Update Travis config and update for SS4 beta2 compatibility [\#30](https://github.com/silverleague/silverstripe-logviewer/pull/30) ([robbieaverill](https://github.com/robbieaverill))
+- FIX Move tests to non-dev PSR-4 autoloader definition [\#28](https://github.com/silverleague/silverstripe-logviewer/pull/28) ([robbieaverill](https://github.com/robbieaverill))
+- FIX Update logger injector alias in example code [\#26](https://github.com/silverleague/silverstripe-logviewer/pull/26) ([robbieaverill](https://github.com/robbieaverill))
+
 ## [1.0.0-alpha1](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0-alpha1) (2017-04-02)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/0.3.0...1.0.0-alpha1)
-
-**Note:** Minimum PHP versions returned to 5.6.
 
 **Fixed bugs:**
 
