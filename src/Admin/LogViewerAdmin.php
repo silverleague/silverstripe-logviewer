@@ -36,7 +36,7 @@ class LogViewerAdmin extends ModelAdmin
     protected function init()
     {
         parent::init();
-        Requirements::css('silverleague/logviewer:assets/scss/logviewer.css');
+        Requirements::css('silverleague/logviewer:client/dist/styles/logviewer.css');
     }
 
     /**

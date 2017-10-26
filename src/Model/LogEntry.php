@@ -2,6 +2,8 @@
 
 namespace SilverLeague\LogViewer\Model;
 
+use SilverStripe\Core\Convert;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\PermissionProvider;
@@ -77,6 +79,29 @@ class LogEntry extends DataObject implements PermissionProvider
                 'help' => _t('LogEntry.PERMISSION_VIEW_HELP', 'Permission required to view existing log entries.')
             ]
         ];
+    }
+
+    /**
+     * Format the log entry as JSON
+     *
+     * {@inheritDoc}
+     */
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+
+        $data = Convert::json2obj($this->getField('Entry'));
+        $fields->addFieldToTab(
+            'Root.Main',
+            LiteralField::create(
+                'Entry',
+                '<pre class="logviewer-logentry-entry"><code>'
+                . Convert::raw2json($data, JSON_PRETTY_PRINT)
+                . '</code></pre>'
+            )
+        );
+
+        return $fields;
     }
 
     /**

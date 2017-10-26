@@ -3,7 +3,7 @@
 namespace SilverLeague\LogViewer\Handler;
 
 use Monolog\Logger;
-use Monolog\Formatter\LineFormatter;
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use SilverLeague\LogViewer\Model\LogEntry;
 use SilverStripe\Core\Config\Config;
@@ -51,17 +51,11 @@ class DataObjectHandler extends AbstractProcessingHandler
         parent::__construct($level, $bubble);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function getDefaultFormatter()
     {
-        return new LineFormatter('%message% %context% %extra%');
+        return new JsonFormatter;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function write(array $record)
     {
         $this->addDataObject((string) $record['formatted'], $record['level_name']);
