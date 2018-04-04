@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.0.0](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0) (2018-04-04)
+[Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.0-beta1...1.0.0)
+
+**Implemented enhancements:**
+
+- Add documentation [\#8](https://github.com/silverleague/silverstripe-logviewer/issues/8)
+-  Add button to CMS to remove old log entries manually [\#4](https://github.com/silverleague/silverstripe-logviewer/issues/4)
+- Add `BuildTask`/`CronTask`/both to remove old log entries automatically [\#3](https://github.com/silverleague/silverstripe-logviewer/issues/3)
+- Add SilverStripe config handling for which log levels should be handled [\#2](https://github.com/silverleague/silverstripe-logviewer/issues/2)
+- DOCS Update readme to include a screenshot, configuration and cleanup examples [\#9](https://github.com/silverleague/silverstripe-logviewer/pull/9) ([robbieaverill](https://github.com/robbieaverill))
+
 ## [1.0.0-beta1](https://github.com/silverleague/silverstripe-logviewer/tree/1.0.0-beta1) (2017-10-26)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/1.0.0-alpha1...1.0.0-beta1)
 
@@ -63,11 +74,6 @@
 ## [0.2.1](https://github.com/silverleague/silverstripe-logviewer/tree/0.2.1) (2017-01-20)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/0.2.0...0.2.1)
 
-**Implemented enhancements:**
-
-- Add documentation [\#8](https://github.com/silverleague/silverstripe-logviewer/issues/8)
-- DOCS Update readme to include a screenshot, configuration and cleanup examples [\#9](https://github.com/silverleague/silverstripe-logviewer/pull/9) ([robbieaverill](https://github.com/robbieaverill))
-
 **Merged pull requests:**
 
 - Update composer alias for next dev version [\#10](https://github.com/silverleague/silverstripe-logviewer/pull/10) ([robbieaverill](https://github.com/robbieaverill))
@@ -75,16 +81,7 @@
 ## [0.2.0](https://github.com/silverleague/silverstripe-logviewer/tree/0.2.0) (2017-01-09)
 [Full Changelog](https://github.com/silverleague/silverstripe-logviewer/compare/0.1.0...0.2.0)
 
-**Implemented enhancements:**
-
-- Add SilverStripe config handling for which log levels should be handled [\#2](https://github.com/silverleague/silverstripe-logviewer/issues/2)
-
 ## [0.1.0](https://github.com/silverleague/silverstripe-logviewer/tree/0.1.0) (2017-01-07)
-**Implemented enhancements:**
-
--  Add button to CMS to remove old log entries manually [\#4](https://github.com/silverleague/silverstripe-logviewer/issues/4)
-- Add `BuildTask`/`CronTask`/both to remove old log entries automatically [\#3](https://github.com/silverleague/silverstripe-logviewer/issues/3)
-
 **Merged pull requests:**
 
 - API Add configurable minimum log capture level - default 300 \(warning\) [\#7](https://github.com/silverleague/silverstripe-logviewer/pull/7) ([robbieaverill](https://github.com/robbieaverill))
