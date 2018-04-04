@@ -1,10 +1,15 @@
 inherit: true
 
-filter:
-  paths: [src/*, tests/*]
+build:
+  nodes:
+    analysis:
+      tests:
+        override: [php-scrutinizer-run]
 
 checks:
   php:
     code_rating: true
     duplication: true
 
+filter:
+  paths: [src/*, tests/*]
