@@ -67,7 +67,7 @@ You can run the task manually from the command line using `sake` or [`ssconsole`
 
 ```shell
 # With sake:
-sake dev/tasks/RemoveOldLogEntriesTask
+vendor/bin/sake dev/tasks/RemoveOldLogEntriesTask
 
 # With ssconsole:
 ssconsole dev:tasks:remove-old-log-entries
