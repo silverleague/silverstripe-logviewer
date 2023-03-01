@@ -3,6 +3,7 @@
 namespace SilverLeague\LogViewer\Task;
 
 use SilverLeague\LogViewer\Model\LogEntry;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\CronTask\Interfaces\CronTask;
@@ -18,7 +19,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
     /**
      * {@inheritDoc}
      */
-    private static $segment = 'RemoveOldLogEntriesTask';
+    private static string $segment = 'RemoveOldLogEntriesTask';
 
     /**
      * {@inheritDoc}
@@ -49,7 +50,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      *
      * @return bool Whether anything was removed
      */
-    public function process()
+    public function process(): bool
     {
         if (!$this->getCronEnabled()) {
             return false;
@@ -60,7 +61,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
     /**
      * {@inheritDoc}
      */
-    public function getSchedule()
+    public function getSchedule(): mixed
     {
         return Config::inst()->get(LogEntry::class, 'cron_schedule');
     }
@@ -70,7 +71,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      *
      * @return int
      */
-    public function getMaxAge()
+    public function getMaxAge(): int
     {
         return (int) Config::inst()->get(LogEntry::class, 'max_log_age');
     }
@@ -80,7 +81,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      *
      * @return bool
      */
-    public function getCronEnabled()
+    public function getCronEnabled(): bool
     {
         return (bool) Config::inst()->get(LogEntry::class, 'cron_enabled');
     }
@@ -90,7 +91,7 @@ class RemoveOldLogEntriesTask extends BuildTask implements CronTask
      *
      * @return bool Whether anything was deleted or not
      */
-    protected function removeOldLogs()
+    protected function removeOldLogs(): bool
     {
         $tableName = LogEntry::singleton()->baseTable();
         $maxAge = $this->getMaxAge();
