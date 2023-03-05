@@ -90,13 +90,13 @@ class LogEntry extends DataObject implements PermissionProvider
     {
         $fields = parent::getCMSFields();
 
-        $data = Convert::json2obj($this->getField('Entry'));
+        $data = json_decode($this->getField('Entry'));
         $fields->addFieldToTab(
             'Root.Main',
             LiteralField::create(
                 'Entry',
                 '<pre class="logviewer-logentry-entry"><code>'
-                . Convert::raw2json($data, JSON_PRETTY_PRINT)
+                . json_encode($data, JSON_PRETTY_PRINT)
                 . '</code></pre>'
             )
         );

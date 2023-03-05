@@ -85,13 +85,14 @@ class LogEntryTest extends SapphireTest
         ];
 
         $entry = LogEntry::create();
-        $entry->Entry = Convert::raw2json($data);
+        $entry->Entry = json_encode($data);
+
 
         $fields = $entry->getCMSFields();
         $field = $fields->fieldByName('Root.Main.Entry');
 
         $this->assertInstanceOf(LiteralField::class, $field);
-        $this->assertContains(Convert::raw2json($data, JSON_PRETTY_PRINT), $field->getContent());
-        $this->assertContains('<pre class="logviewer-logentry-entry"><code>', $field->getContent());
+        $this->assertStringContainsString(json_encode($data, JSON_PRETTY_PRINT), $field->getContent());
+        $this->assertStringContainsString('<pre class="logviewer-logentry-entry"><code>', $field->getContent());
     }
 }

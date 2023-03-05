@@ -31,8 +31,8 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
     public function testClassProperties()
     {
         $task = new RemoveOldLogEntriesTask;
-        $this->assertContains('Remove LogEntry', $task->getTitle());
-        $this->assertContains('that are older than', $task->getDescription());
+        $this->assertStringContainsString('Remove LogEntry', $task->getTitle());
+        $this->assertStringContainsString('that are older than', $task->getDescription());
         $this->assertSame('RemoveOldLogEntriesTask', Config::inst()->get(RemoveOldLogEntriesTask::class, 'segment'));
     }
 
@@ -99,10 +99,10 @@ class RemoveOldLogEntriesTaskTest extends SapphireTest
         $buffer = ob_get_clean();
 
         $this->assertTrue($result);
-        $this->assertContains('Removed 6 log(s)', $buffer);
+        $this->assertStringContainsString('Removed 6 log(s)', $buffer);
         // Nothing to do the second time
         $this->assertFalse($second);
-        $this->assertContains('Removed 0 log(s)', $buffer);
-        $this->assertContains('older than 1 day(s)', $buffer);
+        $this->assertStringContainsString('Removed 0 log(s)', $buffer);
+        $this->assertStringContainsString('older than 1 day(s)', $buffer);
     }
 }
