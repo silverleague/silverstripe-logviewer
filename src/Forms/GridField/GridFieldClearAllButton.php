@@ -16,19 +16,13 @@ use SilverStripe\Forms\GridField\GridField_ActionProvider;
  */
 class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_ActionProvider
 {
-    /**
-     * Fragment to write the button to
-     *
-     * @var string
-     */
-    protected $targetFragment;
 
     /**
      * @param string $targetFragment The HTML fragment to write the button into
      */
-    public function __construct($targetFragment = 'after')
+    public function __construct(protected string $targetFragment = 'after')
     {
-        $this->targetFragment = $targetFragment;
+
     }
 
     /**
@@ -37,7 +31,7 @@ class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_Actio
      * @param  GridField $gridField
      * @return array
      */
-    public function getHTMLFragments($gridField)
+    public function getHTMLFragments($gridField): array
     {
         $button = GridField_FormAction::create($gridField, 'clear', 'Clear all', 'clear', null)
             ->setAttribute('data-icon', 'clear-all-logs')
@@ -74,7 +68,7 @@ class GridFieldClearAllButton implements GridField_HTMLProvider, GridField_Actio
     /**
      * {@inheritDoc}
      */
-    public function getActions($gridField)
+    public function getActions($gridField): array
     {
         return ['clear'];
     }

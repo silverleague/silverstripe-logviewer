@@ -16,14 +16,14 @@ use SilverStripe\Security\PermissionProvider;
  */
 class LogEntry extends DataObject implements PermissionProvider
 {
-    private static $table_name = 'LogEntry';
+    private static string $table_name = 'LogEntry';
 
-    private static $db = [
+    private static array $db = [
         'Entry'    => 'Text',
         'Level'    => 'Varchar'
     ];
 
-    private static $summary_fields = [
+    private static array $summary_fields = [
         'Entry',
         'Created',
         'Level'
@@ -36,7 +36,7 @@ class LogEntry extends DataObject implements PermissionProvider
      * @config
      * @var bool
      */
-    private static $cron_enabled = true;
+    private static bool $cron_enabled = true;
 
     /**
      * How often the cron should run (default: 4am daily)
@@ -44,7 +44,7 @@ class LogEntry extends DataObject implements PermissionProvider
      * @config
      * @var string
      */
-    private static $cron_schedule = '0 4 * * *';
+    private static string $cron_schedule = '0 4 * * *';
 
     /**
      * The maximum age in days for a LogEntry before it will be removed
@@ -52,7 +52,7 @@ class LogEntry extends DataObject implements PermissionProvider
      * @config
      * @var int
      */
-    private static $max_log_age = 30;
+    private static int $max_log_age = 30;
 
     /**
      * Which Monolog\Logger levels (numeric) to start handling from (see class for examples)
@@ -60,12 +60,12 @@ class LogEntry extends DataObject implements PermissionProvider
      * @config
      * @var integer
      */
-    private static $minimum_log_level = 300;
+    private static int $minimum_log_level = 300;
 
     /**
      * Permissions
      */
-    public function providePermissions()
+    public function providePermissions(): array
     {
         return [
             'DELETE_ENTRY' => [
@@ -90,13 +90,13 @@ class LogEntry extends DataObject implements PermissionProvider
     {
         $fields = parent::getCMSFields();
 
-        $data = Convert::json2obj($this->getField('Entry'));
+        $data = json_decode($this->getField('Entry'));
         $fields->addFieldToTab(
             'Root.Main',
             LiteralField::create(
                 'Entry',
                 '<pre class="logviewer-logentry-entry"><code>'
-                . Convert::raw2json($data, JSON_PRETTY_PRINT)
+                . json_encode($data, JSON_PRETTY_PRINT)
                 . '</code></pre>'
             )
         );
@@ -109,7 +109,7 @@ class LogEntry extends DataObject implements PermissionProvider
      *
      * {@inheritDoc}
      */
-    public function canCreate($member = null, $context = [])
+    public function canCreate($member = null, $context = []): bool
     {
         return false;
     }
@@ -119,17 +119,17 @@ class LogEntry extends DataObject implements PermissionProvider
      *
      * {@inheritDoc}
      */
-    public function canEdit($member = null)
+    public function canEdit($member = null): bool
     {
         return false;
     }
 
-    public function canDelete($member = null)
+    public function canDelete($member = null): bool | int
     {
         return Permission::checkMember($member, ['DELETE_ENTRY', 'CMS_ACCESS_LogViewerAdmin']);
     }
 
-    public function canView($member = null)
+    public function canView($member = null): bool | int
     {
         return Permission::checkMember($member, ['VIEW_ENTRY', 'CMS_ACCESS_LogViewerAdmin']);
     }

@@ -35,7 +35,7 @@ class GridFieldClearAllButtonTest extends SapphireTest
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -67,9 +67,9 @@ class GridFieldClearAllButtonTest extends SapphireTest
         $fragments = $this->getSubject()->getHTMLFragments($this->gridField);
 
         $this->assertArrayHasKey('before', $fragments);
-        $this->assertContains('Clear all', $fragments['before']);
-        $this->assertContains('clear-all-logs', $fragments['before']);
-        $this->assertContains('font-icon-trash-bin action_clear', $fragments['before']);
+        $this->assertStringContainsString('Clear all', $fragments['before']);
+        $this->assertStringContainsString('clear-all-logs', $fragments['before']);
+        $this->assertStringContainsString('font-icon-trash-bin action_clear', $fragments['before']);
     }
 
     /**

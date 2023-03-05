@@ -2,6 +2,7 @@
 
 namespace SilverLeague\LogViewer\Tests\Handler;
 
+use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use SilverLeague\LogViewer\Handler\DataObjectHandler;
 use SilverLeague\LogViewer\Model\LogEntry;
@@ -19,13 +20,13 @@ class DataObjectHandlerTest extends SapphireTest
      * A Logger instance
      * @var Monolog\Logger
      */
-    protected $logger;
+    protected Logger $logger;
 
     /**
      * The original logger handlers
      * @var Monolog\LoggerInterface[]
      */
-    protected $originalHandlers = [];
+    protected  $originalHandlers = [];
 
     /**
      * {@inheritDoc}
@@ -37,7 +38,7 @@ class DataObjectHandlerTest extends SapphireTest
      *
      * {@inheritDoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -54,10 +55,10 @@ class DataObjectHandlerTest extends SapphireTest
     public function testWriteToDefaultLogger()
     {
         $this->logger->pushHandler(new DataObjectHandler);
-        $this->logger->addError('Hello world');
+        $this->logger->error('Hello world');
 
         $logEntry = LogEntry::get()->first();
-        $this->assertContains('Hello world', $logEntry->Entry);
+        $this->assertStringContainsString('Hello world', $logEntry->Entry);
         $this->assertSame('ERROR', $logEntry->Level);
     }
 
@@ -70,13 +71,13 @@ class DataObjectHandlerTest extends SapphireTest
         LogEntry::get()->removeAll();
         $this->logger->pushHandler(new DataObjectHandler);
 
-        $this->logger->addDebug('Debug');
+        $this->logger->debug('Debug');
         $this->assertSame(0, LogEntry::get()->count());
 
-        $this->logger->addWarning('Warning');
+        $this->logger->warning('Warning');
         $this->assertGreaterThan(0, LogEntry::get()->filter('Level', 'WARNING')->count());
 
-        $this->logger->addAlert('Alert');
+        $this->logger->alert('Alert');
         $this->assertGreaterThan(0, LogEntry::get()->filter('Level', 'ALERT')->count());
     }
 
@@ -85,8 +86,8 @@ class DataObjectHandlerTest extends SapphireTest
      */
     public function testGetMinimumLogLevelFromConfiguration()
     {
-        Config::modify()->set(LogEntry::class, 'minimum_log_level', 123);
-        $this->assertSame(123, (new DataObjectHandler)->getMinimumLogLevel());
+        Config::modify()->set(LogEntry::class, 'minimum_log_level', 300);
+        $this->assertSame(300, (new DataObjectHandler)->getMinimumLogLevel());
     }
 
     /**
@@ -94,7 +95,7 @@ class DataObjectHandlerTest extends SapphireTest
      *
      * {@inheritDoc}
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->logger->setHandlers($this->originalHandlers);
 

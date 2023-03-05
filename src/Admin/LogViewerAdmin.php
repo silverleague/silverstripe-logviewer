@@ -5,7 +5,10 @@ namespace SilverLeague\LogViewer\Admin;
 use SilverLeague\LogViewer\Model\LogEntry;
 use SilverLeague\LogViewer\Forms\GridField\GridFieldClearAllButton;
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\Form;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\View\Requirements;
 
 /**
@@ -16,13 +19,13 @@ use SilverStripe\View\Requirements;
  */
 class LogViewerAdmin extends ModelAdmin
 {
-    private static $url_segment = 'logs';
+    private static string $url_segment = 'logs';
 
-    private static $menu_title = 'Logs';
+    private static string $menu_title = 'Logs';
 
-    private static $menu_icon_class = 'font-icon-list';
+    private static string $menu_icon_class = 'font-icon-list';
 
-    private static $managed_models = [
+    private static array $managed_models = [
         LogEntry::class
     ];
 
@@ -44,7 +47,7 @@ class LogViewerAdmin extends ModelAdmin
      *
      * {@inheritDoc}
      */
-    public function getEditForm($id = null, $fields = null)
+    public function getEditForm($id = null, $fields = null): Form
     {
         $form = parent::getEditForm($id, $fields);
 
@@ -63,7 +66,7 @@ class LogViewerAdmin extends ModelAdmin
      *
      * @return string
      */
-    public function getGridFieldName()
+    public function getGridFieldName(): string
     {
         return $this->sanitiseClassName($this->modelClass);
     }
@@ -73,7 +76,7 @@ class LogViewerAdmin extends ModelAdmin
      *
      * {@inheritDoc}
      */
-    public function getList()
+    public function getList(): DataList
     {
         $list = parent::getList();
         return $list->sort(['Created' => 'DESC']);
